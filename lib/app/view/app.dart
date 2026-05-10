@@ -6,7 +6,7 @@ import 'package:leaderboard_repository/leaderboard_repository.dart';
 import 'package:super_dash/app_lifecycle/app_lifecycle.dart';
 import 'package:super_dash/audio/audio.dart';
 import 'package:super_dash/game_intro/game_intro.dart';
-import 'package:super_dash/l10n/l10n.dart';
+import 'package:super_dash/l10n/arb/app_localizations.dart';
 import 'package:super_dash/map_tester/map_tester.dart';
 import 'package:super_dash/settings/settings.dart';
 import 'package:super_dash/share/share.dart';

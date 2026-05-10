@@ -107,86 +107,86 @@ class PlayerStateBehavior extends Behavior<Player> {
       phoenixDoubleJumpAnimation,
     ] = await Future.wait(
       [
-        parent.gameRef.loadSpriteAnimation(
+        parent.game.loadSpriteAnimation(
           'anim/spritesheet_dash_idle.png',
           SpriteAnimationData.sequenced(
             amount: 18,
             stepTime: 0.042,
-            textureSize: Vector2.all(parent.gameRef.tileSize),
+            textureSize: Vector2.all(parent.game.tileSize),
           ),
         ),
-        parent.gameRef.loadSpriteAnimation(
+        parent.game.loadSpriteAnimation(
           'anim/spritesheet_dash_run.png',
           SpriteAnimationData.sequenced(
             amount: 16,
             stepTime: 0.042,
-            textureSize: Vector2.all(parent.gameRef.tileSize),
+            textureSize: Vector2.all(parent.game.tileSize),
           ),
         ),
-        parent.gameRef.loadSpriteAnimation(
+        parent.game.loadSpriteAnimation(
           'anim/spritesheet_phoenixDash_idle.png',
           SpriteAnimationData.sequenced(
             amount: 18,
             stepTime: 0.042,
-            textureSize: Vector2.all(parent.gameRef.tileSize),
+            textureSize: Vector2.all(parent.game.tileSize),
           ),
         ),
-        parent.gameRef.loadSpriteAnimation(
+        parent.game.loadSpriteAnimation(
           'anim/spritesheet_phoenixDash_run.png',
           SpriteAnimationData.sequenced(
             amount: 16,
             stepTime: 0.042,
-            textureSize: Vector2.all(parent.gameRef.tileSize),
+            textureSize: Vector2.all(parent.game.tileSize),
           ),
         ),
-        parent.gameRef.loadSpriteAnimation(
+        parent.game.loadSpriteAnimation(
           'anim/spritesheet_dash_deathPit.png',
           SpriteAnimationData.sequenced(
             amount: 24,
             stepTime: 0.042,
-            textureSize: Vector2.all(parent.gameRef.tileSize),
+            textureSize: Vector2.all(parent.game.tileSize),
             amountPerRow: 8,
             loop: false,
           ),
         ),
-        parent.gameRef.loadSpriteAnimation(
+        parent.game.loadSpriteAnimation(
           'anim/spritesheet_dash_deathFaint.png',
           SpriteAnimationData.sequenced(
             amount: 24,
             stepTime: 0.042,
-            textureSize: Vector2.all(parent.gameRef.tileSize),
+            textureSize: Vector2.all(parent.game.tileSize),
             amountPerRow: 8,
             loop: false,
           ),
         ),
-        parent.gameRef.loadSpriteAnimation(
+        parent.game.loadSpriteAnimation(
           'anim/spritesheet_dash_jump.png',
           SpriteAnimationData.sequenced(
             amount: 16,
             stepTime: 0.042,
-            textureSize: Vector2.all(parent.gameRef.tileSize),
+            textureSize: Vector2.all(parent.game.tileSize),
             loop: false,
           ),
         ),
-        parent.gameRef.loadSpriteAnimation(
+        parent.game.loadSpriteAnimation(
           'anim/spritesheet_phoenixDash_jump.png',
           SpriteAnimationData.sequenced(
             amount: 16,
             stepTime: 0.042,
             textureSize: Vector2(
-              parent.gameRef.tileSize,
-              parent.gameRef.tileSize * 2,
+              parent.game.tileSize,
+              parent.game.tileSize * 2,
             ),
             amountPerRow: 8,
             loop: false,
           ),
         ),
-        parent.gameRef.loadSpriteAnimation(
+        parent.game.loadSpriteAnimation(
           'anim/spritesheet_phoenixDash_doublejump.png',
           SpriteAnimationData.sequenced(
             amount: 16,
             stepTime: 0.042,
-            textureSize: Vector2.all(parent.gameRef.tileSize),
+            textureSize: Vector2.all(parent.game.tileSize),
             loop: false,
           ),
         ),

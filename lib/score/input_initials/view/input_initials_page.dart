@@ -1,6 +1,5 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:super_dash/game/game.dart';
 import 'package:super_dash/game_intro/game_intro.dart';
 import 'package:super_dash/gen/assets.gen.dart';
@@ -45,7 +44,7 @@ class InputInitialsPage extends StatelessWidget {
                   child: const Align(
                     alignment: Alignment(-0.06, 0),
                     child: Icon(
-                      FontAwesomeIcons.trophy,
+                      Icons.emoji_events,
                       size: 18,
                       color: Colors.white,
                     ),

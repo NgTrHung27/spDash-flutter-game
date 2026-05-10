@@ -8,7 +8,7 @@ class CameraDebugger extends RectangleComponent {
   CameraDebugger({
     super.position,
   }) : super(
-          paint: Paint()..color = Colors.pink.withOpacity(0.5),
+          paint: Paint()..color = Colors.pink.withValues(alpha: 0.5),
           size: Vector2.all(150),
           priority: 100,
           anchor: Anchor.center,

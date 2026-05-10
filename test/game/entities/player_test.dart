@@ -9,12 +9,15 @@ import 'package:flutter/src/services/asset_bundle.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:leap/leap.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:ordered_set/ordered_set.dart';
 import 'package:super_dash/audio/audio.dart';
 import 'package:super_dash/game/game.dart';
 
 class _MockImage extends Mock implements Image {}
 
 class _MockImages extends Mock implements Images {}
+
+class _MockOrderedSet extends Mock implements OrderedSet<Component> {}
 
 class _MockGameBloc extends MockBloc<GameEvent, GameState>
     implements GameBloc {}
@@ -78,7 +81,7 @@ class _TestSuperDashGame extends SuperDashGame {
     if (_leapMap == null) {
       final map = _MockLeapMap();
 
-      when(() => map.children).thenReturn(ComponentSet());
+      when(() => map.children).thenReturn(_MockOrderedSet());
 
       when(() => map.width).thenReturn(100);
       when(() => map.height).thenReturn(100);
@@ -206,7 +209,7 @@ void main() {
 
         expect(player.isPlayerTeleporting, isTrue);
       },
-      // TODO(marcossevilla): Fix this test, it's failing because
+      // (marcossevilla): Fix this test, it's failing because
       //  a class we need to mock is internal on flame_tiled.
       skip: true,
     );

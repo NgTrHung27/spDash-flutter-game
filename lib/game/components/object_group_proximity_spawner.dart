@@ -3,8 +3,7 @@ import 'dart:ui';
 
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
-import 'package:ordered_set/comparing.dart';
-import 'package:ordered_set/ordered_set.dart';
+import 'package:ordered_set/comparing_ordered_set.dart';
 import 'package:super_dash/game/game.dart';
 
 typedef ObjectGroupProximitySpawner = PositionComponent Function({
@@ -12,7 +11,7 @@ typedef ObjectGroupProximitySpawner = PositionComponent Function({
 });
 
 class ObjectGroupProximityBuilder<Reference extends PositionComponent>
-    extends Component with HasGameRef<SuperDashGame> {
+    extends Component with HasGameReference<SuperDashGame> {
   ObjectGroupProximityBuilder({
     required this.proximity,
     required this.tileLayerName,
@@ -27,8 +26,8 @@ class ObjectGroupProximityBuilder<Reference extends PositionComponent>
 
   late final Image tiles;
 
-  final _objects = OrderedSet<TiledObject>(
-    Comparing.on((object) => object.x),
+  final _objects = ComparingOrderedSet<TiledObject>(
+    compare: (a, b) => a.x.compareTo(b.x),
   );
 
   final Map<int, PositionComponent> _spawnedComponents = {};
@@ -45,7 +44,7 @@ class ObjectGroupProximityBuilder<Reference extends PositionComponent>
 
     currentReference = game.world.firstChild<Reference>();
 
-    final layer = gameRef.leapMap.getTileLayer<ObjectGroup>(tileLayerName);
+    final layer = game.leapMap.getTileLayer<ObjectGroup>(tileLayerName);
 
     _objects.addAll(layer.objects);
 
@@ -72,7 +71,7 @@ class ObjectGroupProximityBuilder<Reference extends PositionComponent>
   void update(double dt) {
     super.update(dt);
 
-    final reference = this.currentReference;
+    final reference = currentReference;
     if (reference == null || !reference.isMounted) return;
 
     _referenceDirection = reference.x > _lastReferenceX
@@ -112,7 +111,7 @@ class ObjectGroupProximityBuilder<Reference extends PositionComponent>
         );
 
         _spawnedComponents[object.id] = component;
-        gameRef.leapMap.add(component);
+        game.leapMap.add(component);
       }
     }
   }

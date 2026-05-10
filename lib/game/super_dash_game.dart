@@ -15,18 +15,7 @@ import 'package:super_dash/audio/audio.dart';
 import 'package:super_dash/game/game.dart';
 import 'package:super_dash/score/score.dart';
 
-bool _tsxPackingFilter(Tileset tileset) {
-  return !(tileset.source ?? '').startsWith('anim');
-}
-
-Paint _layerPaintFactory(double opacity) {
-  return Paint()
-    ..color = Color.fromRGBO(255, 255, 255, opacity)
-    ..isAntiAlias = false;
-}
-
-class SuperDashGame extends LeapGame
-    with TapDetector, HasKeyboardHandlerComponents {
+class SuperDashGame extends LeapGame with TapCallbacks {
   SuperDashGame({
     required this.gameBloc,
     required this.audioController,
@@ -34,16 +23,7 @@ class SuperDashGame extends LeapGame
     this.inMapTester = false,
   }) : super(
           tileSize: 64,
-          configuration: const LeapConfiguration(
-            tiled: TiledOptions(
-              atlasMaxX: 4048,
-              atlasMaxY: 4048,
-              tsxPackingFilter: _tsxPackingFilter,
-              layerPaintFactory: _layerPaintFactory,
-              atlasPackingSpacingX: 4,
-              atlasPackingSpacingY: 4,
-            ),
-          ),
+          configuration: const LeapConfiguration(),
         );
 
   static final _cameraViewport = Vector2(592, 1024);
@@ -97,14 +77,6 @@ class SuperDashGame extends LeapGame
     for (final listener in _inputListener) {
       listener();
     }
-  }
-
-  @override
-  void onTapDown(TapDownInfo info) {
-    super.onTapDown(info);
-
-    _triggerInputListeners();
-    overlays.remove('tapToJump');
   }
 
   @override
@@ -323,6 +295,12 @@ class SuperDashGame extends LeapGame
     player?.isPlayerTeleporting = false;
 
     _setSectionBackground();
+  }
+
+  @override
+  void onTapDown(TapDownEvent event) {
+    _triggerInputListeners();
+    overlays.remove('tapToJump');
   }
 
   void sectionCleared() {

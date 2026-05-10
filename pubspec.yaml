@@ -10,10 +10,10 @@ environment:
 dependencies:
   app_ui:
     path: packages/app_ui
-  audioplayers: ^5.2.0
+  audioplayers: ^6.0.0
   authentication_repository:
     path: packages/authentication_repository
-  bloc: ^8.1.2
+  bloc: ^9.2.0
   cloud_firestore: ^4.15.6
   equatable: ^2.0.5
   file_selector: ^1.0.1
@@ -23,46 +23,40 @@ dependencies:
   flame: ^1.10.0
   flame_behaviors: ^1.0.0
   flame_tiled: ^1.15.0
-  flow_builder: ^0.0.9
+  flow_builder: ^0.1.0
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.1.3
+  flutter_bloc: ^9.1.1
   flutter_localizations:
     sdk: flutter
-  font_awesome_flutter: ^10.6.0
+  font_awesome_flutter: ^11.0.0
   intl: ^0.18.0
   leaderboard_repository:
     path: packages/leaderboard_repository
-  leap: ^0.2.1
+  leap:
+    path: packages/leap_patched
   logging: ^1.2.0
   ordered_set: ^5.0.2
   path: ^1.8.3
   pathxp: ^0.4.0
   provider: ^6.0.5
-  share_plus: ^7.2.1
+  share_plus: ^10.0.0
   shared_preferences: ^2.2.2
   url_launcher: ^6.2.1
 
 dev_dependencies:
-  bloc_test: ^9.1.2
-  flame_test: ^1.14.0
-  flutter_launcher_icons: ^0.13.1
+  bloc_test: ^10.0.0
+  flame_test: ^2.2.2
+  flutter_launcher_icons: ^0.14.4
   flutter_test:
     sdk: flutter
   mocktail: ^1.0.0
-  very_good_analysis: ^5.0.0
+  very_good_analysis: ^10.0.0
 
 dependency_overrides:
-  flame_tiled:
-    git:
-      url: https://github.com/flame-engine/flame.git
-      ref: main
-      path: packages/flame_tiled
-  leap:
-    git:
-      url: https://github.com/VeryGoodOpenSource/leap.git
-      ref: vgv
-      path: packages/leap
+  intl: ^0.20.2
+  ordered_set: ^8.0.0
+  tiled: ^0.10.1
 
 flutter:
   uses-material-design: true

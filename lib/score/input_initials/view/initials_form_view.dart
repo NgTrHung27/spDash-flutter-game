@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:super_dash/l10n/l10n.dart';
 import 'package:super_dash/score/input_initials/formatters/formatters.dart';
 import 'package:super_dash/score/score.dart';
@@ -281,7 +280,7 @@ class _ErrorTextWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Icon(
-          FontAwesomeIcons.circleExclamation,
+          Icons.error,
           color: Color(0xFFF48B8B),
           size: 20,
         ),

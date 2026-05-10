@@ -1,7 +1,6 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:super_dash/game_intro/game_intro.dart';
 import 'package:super_dash/leaderboard/leaderboard.dart';
 import 'package:super_dash/settings/settings_controller.dart';
@@ -28,8 +27,8 @@ class LeaderboardButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GameIconButton(
-      icon: FontAwesomeIcons.trophy,
-      size: 18,
+      icon: Icons.emoji_events,
+      size: 18, 
       alignment: const Alignment(-0.3, 0),
       onPressed: () => Navigator.of(context).push(LeaderboardPage.route()),
     );

@@ -44,16 +44,16 @@ class Item extends PhysicalEntity<SuperDashGame> {
       (tiledObject.properties.byName['Type'] as StringProperty?)?.value,
     );
 
-    size = Vector2.all(gameRef.tileSize);
+    size = Vector2.all(game.tileSize);
     position = Vector2(tiledObject.x, tiledObject.y);
 
     if (type == ItemType.egg) {
-      final eggAnimation = await gameRef.loadSpriteAnimation(
+      final eggAnimation = await game.loadSpriteAnimation(
         'anim/spritesheet_item_egg.png',
         SpriteAnimationData.sequenced(
           amount: 48,
           amountPerRow: 8,
-          textureSize: Vector2.all(gameRef.tileSize),
+          textureSize: Vector2.all(game.tileSize),
           stepTime: .042,
         ),
       );
@@ -64,12 +64,12 @@ class Item extends PhysicalEntity<SuperDashGame> {
         ),
       );
     } else if (type == ItemType.goldenFeather) {
-      final featherAnimation = await gameRef.loadSpriteAnimation(
+      final featherAnimation = await game.loadSpriteAnimation(
         'anim/spritesheet_item_feather.png',
         SpriteAnimationData.sequenced(
           amount: 30,
           amountPerRow: 6,
-          textureSize: Vector2.all(gameRef.tileSize),
+          textureSize: Vector2.all(game.tileSize),
           stepTime: .042,
         ),
       );
@@ -83,18 +83,18 @@ class Item extends PhysicalEntity<SuperDashGame> {
       add(
         SpriteComponent(
           size: size,
-          sprite: gameRef.itemsSpritesheet.getSpriteById(
-            (tiledObject.gid ?? 0) - gameRef.itemsTileset.firstGid!,
+          sprite: game.itemsSpritesheet.getSpriteById(
+            (tiledObject.gid ?? 0) - game.itemsTileset.firstGid!,
           ),
           children: [
             SequenceEffect(
               [
                 MoveEffect.by(
-                  -Vector2(0, gameRef.tileSize / 2),
+                  -Vector2(0, game.tileSize / 2),
                   CurvedEffectController(.8, Curves.easeIn),
                 ),
                 MoveEffect.by(
-                  Vector2(0, gameRef.tileSize / 2),
+                  Vector2(0, game.tileSize / 2),
                   CurvedEffectController(.8, Curves.easeOut),
                 ),
               ],

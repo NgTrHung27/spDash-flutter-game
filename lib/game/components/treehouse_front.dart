@@ -9,7 +9,8 @@ typedef TreeHouseFrontRender = void Function(
   CameraComponent camera,
 );
 
-class TreeHouseFront extends PositionComponent with HasGameRef<SuperDashGame> {
+class TreeHouseFront extends PositionComponent
+    with HasGameReference<SuperDashGame> {
   TreeHouseFront({
     required this.renderFront,
   }) : super(priority: 1000, position: Vector2(0, 0));
@@ -20,6 +21,6 @@ class TreeHouseFront extends PositionComponent with HasGameRef<SuperDashGame> {
   void render(Canvas canvas) {
     super.render(canvas);
 
-    renderFront(canvas, gameRef.camera);
+    renderFront(canvas, game.camera);
   }
 }

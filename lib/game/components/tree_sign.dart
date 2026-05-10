@@ -5,7 +5,7 @@ import 'package:flame/components.dart';
 import 'package:flame/text.dart';
 import 'package:super_dash/game/super_dash_game.dart';
 
-class TreeSign extends TextComponent with HasGameRef<SuperDashGame> {
+class TreeSign extends TextComponent with HasGameReference<SuperDashGame> {
   TreeSign({
     super.position,
   }) : super(
@@ -22,7 +22,7 @@ class TreeSign extends TextComponent with HasGameRef<SuperDashGame> {
   FutureOr<void> onLoad() async {
     await super.onLoad();
 
-    final currentLevel = gameRef.state.currentLevel;
+    final currentLevel = game.state.currentLevel;
     text = 'DAY $currentLevel';
   }
 }

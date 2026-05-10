@@ -14,14 +14,14 @@ class PlayerControllerBehavior extends Behavior<Player> {
   FutureOr<void> onLoad() async {
     await super.onLoad();
 
-    parent.gameRef.addInputListener(_handleInput);
+    parent.game.addInputListener(_handleInput);
   }
 
   @override
   void onRemove() {
     super.onRemove();
 
-    parent.gameRef.removeInputListener(_handleInput);
+    parent.game.removeInputListener(_handleInput);
   }
 
   void _handleInput() {

@@ -22,7 +22,7 @@ class FollowPathBehavior extends Behavior<PhysicalEntity> {
 
     const speed = 3.0;
 
-    final tileSize = parent.gameRef.tileSize;
+    final tileSize = parent.game.tileSize;
 
     final steps = [...pathExpression.path.path];
 

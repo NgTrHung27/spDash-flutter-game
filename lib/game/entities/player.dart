@@ -44,7 +44,7 @@ class Player extends JumperCharacter<SuperDashGame> {
 
   void jumpEffects() {
     final jumpSound = hasGoldenFeather ? Sfx.phoenixJump : Sfx.jump;
-    gameRef.audioController.playSfx(jumpSound);
+    game.audioController.playSfx(jumpSound);
 
     final newJumpState =
         hasGoldenFeather ? DashState.phoenixJump : DashState.jump;
@@ -52,7 +52,7 @@ class Player extends JumperCharacter<SuperDashGame> {
   }
 
   void doubleJumpEffects() {
-    gameRef.audioController.playSfx(Sfx.phoenixJump);
+    game.audioController.playSfx(Sfx.phoenixJump);
     stateBehavior.state = DashState.phoenixDoubleJump;
   }
 
@@ -88,27 +88,27 @@ class Player extends JumperCharacter<SuperDashGame> {
   Future<void> onLoad() async {
     await super.onLoad();
 
-    size = Vector2.all(gameRef.tileSize * .5);
-    walkSpeed = gameRef.tileSize * speed;
+    size = Vector2.all(game.tileSize * .5);
+    walkSpeed = game.tileSize * speed;
     minJumpImpulse = world.gravity * jumpImpulse;
     cameraAnchor = PlayerCameraAnchor(
       cameraViewport: cameraViewport,
       levelSize: levelSize,
-      showCameraBounds: gameRef.inMapTester,
+      showCameraBounds: game.inMapTester,
     );
 
     add(cameraAnchor);
     add(PlayerControllerBehavior());
     add(PlayerStateBehavior());
 
-    gameRef.camera.follow(cameraAnchor);
+    game.camera.follow(cameraAnchor);
 
     loadSpawnPoint();
     loadRespawnPoints();
   }
 
   void loadRespawnPoints() {
-    final respawnGroup = gameRef.leapMap.getTileLayer<ObjectGroup>('respawn');
+    final respawnGroup = game.leapMap.getTileLayer<ObjectGroup>('respawn');
     respawnPoints = [
       ...respawnGroup.objects.map(
         (object) => Vector2(object.x, object.y),
@@ -117,7 +117,7 @@ class Player extends JumperCharacter<SuperDashGame> {
   }
 
   void loadSpawnPoint() {
-    final spawnGroup = gameRef.leapMap.getTileLayer<ObjectGroup>('spawn');
+    final spawnGroup = game.leapMap.getTileLayer<ObjectGroup>('spawn');
     for (final object in spawnGroup.objects) {
       position = Vector2(object.x, object.y);
       spawn = position.clone();
@@ -142,7 +142,7 @@ class Player extends JumperCharacter<SuperDashGame> {
       _gameOverTimer = _gameOverTimer! - dt;
       if (_gameOverTimer! <= 0) {
         _gameOverTimer = null;
-        gameRef.gameOver();
+        game.gameOver();
       }
       return;
     }
@@ -151,9 +151,9 @@ class Player extends JumperCharacter<SuperDashGame> {
 
     if (isPlayerTeleporting) return;
 
-    if ((gameRef.isLastSection && x >= gameRef.leapMap.width - tileSize) ||
-        (!gameRef.isLastSection &&
-            x >= gameRef.leapMap.width - gameRef.tileSize * 15)) {
+    if ((game.isLastSection && x >= game.leapMap.width - tileSize) ||
+        (!game.isLastSection &&
+            x >= game.leapMap.width - game.tileSize * 15)) {
       sectionCleared();
       return;
     }
@@ -184,19 +184,19 @@ class Player extends JumperCharacter<SuperDashGame> {
       if (collision is Item) {
         switch (collision.type) {
           case ItemType.acorn || ItemType.egg:
-            gameRef.audioController.playSfx(
+            game.audioController.playSfx(
               collision.type == ItemType.acorn
                   ? Sfx.acornPickup
                   : Sfx.eggPickup,
             );
-            gameRef.gameBloc.add(
+            game.gameBloc.add(
               GameScoreIncreased(by: collision.type.points),
             );
           case ItemType.goldenFeather:
             addPowerUp();
-            gameRef.audioController.playSfx(Sfx.featherPowerup);
+            game.audioController.playSfx(Sfx.featherPowerup);
         }
-        gameRef.world.add(
+        game.world.add(
           ItemEffect(
             type: collision.type,
             position: collision.position.clone(),
@@ -286,6 +286,6 @@ class Player extends JumperCharacter<SuperDashGame> {
 
   void sectionCleared() {
     isPlayerTeleporting = true;
-    gameRef.sectionCleared();
+    game.sectionCleared();
   }
 }

@@ -5,7 +5,6 @@ import 'package:flame/widgets.dart';
 import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:leaderboard_repository/leaderboard_repository.dart';
 import 'package:super_dash/game/game.dart';
 import 'package:super_dash/gen/assets.gen.dart';
@@ -286,7 +285,7 @@ class _LeaderboardEntries extends StatelessWidget {
             children: [
               if ([0, 1, 2].contains(index)) ...[
                 Icon(
-                  FontAwesomeIcons.trophy,
+                  Icons.emoji_events,
                   size: 20,
                   color: switch (index) {
                     0 => const Color(0xFFD4AF37),

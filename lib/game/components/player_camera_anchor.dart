@@ -113,7 +113,7 @@ class CameraBounds extends PositionComponent {
 }
 
 class PlayerCameraAnchor extends Component
-    with ParentIsA<PositionComponent>, HasGameRef<SuperDashGame>
+    with ParentIsA<PositionComponent>, HasGameReference<SuperDashGame>
     implements ReadOnlyPositionProvider {
   PlayerCameraAnchor({
     required this.levelSize,
@@ -158,7 +158,7 @@ class PlayerCameraAnchor extends Component
       bound: 128,
       showBounds: showCameraBounds,
     );
-    gameRef.world.add(_bounds);
+    game.world.add(_bounds);
 
     final value = parent.position.clone();
     _setAnchor(value.x, value.y);

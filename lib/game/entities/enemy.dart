@@ -54,7 +54,7 @@ class Enemy extends PhysicalEntity<SuperDashGame> {
 
   @override
   Future<void> onLoad() async {
-    size = Vector2.all(gameRef.tileSize * .5);
+    size = Vector2.all(game.tileSize * .5);
     position = Vector2(tiledObject.x, tiledObject.y);
 
     final path =
@@ -68,7 +68,7 @@ class Enemy extends PhysicalEntity<SuperDashGame> {
     final spritePosition = size / 2 - Vector2(0, size.y / 2);
 
     if (type == EnemyType.bettle) {
-      final bettleAnimation = await gameRef.loadSpriteAnimation(
+      final bettleAnimation = await game.loadSpriteAnimation(
         'anim/spritesheet_enemy_beetle.png',
         SpriteAnimationData.sequenced(
           amount: 16,
@@ -80,14 +80,14 @@ class Enemy extends PhysicalEntity<SuperDashGame> {
 
       add(
         SpriteAnimationComponent(
-          size: Vector2.all(gameRef.tileSize),
+          size: Vector2.all(game.tileSize),
           animation: bettleAnimation,
           anchor: Anchor.center,
           position: spritePosition,
         ),
       );
     } else if (type == EnemyType.bee) {
-      final beeAnimation = await gameRef.loadSpriteAnimation(
+      final beeAnimation = await game.loadSpriteAnimation(
         'anim/spritesheet_enemy_bee.png',
         SpriteAnimationData.sequenced(
           amount: 14,
@@ -99,14 +99,14 @@ class Enemy extends PhysicalEntity<SuperDashGame> {
 
       add(
         SpriteAnimationComponent(
-          size: Vector2.all(gameRef.tileSize),
+          size: Vector2.all(game.tileSize),
           animation: beeAnimation,
           anchor: Anchor.center,
           position: spritePosition,
         ),
       );
     } else if (type == EnemyType.butterfly) {
-      final butterflyAnimation = await gameRef.loadSpriteAnimation(
+      final butterflyAnimation = await game.loadSpriteAnimation(
         'anim/spritesheet_enemy_butterfly.png',
         SpriteAnimationData.sequenced(
           amount: 16,
@@ -118,14 +118,14 @@ class Enemy extends PhysicalEntity<SuperDashGame> {
 
       add(
         SpriteAnimationComponent(
-          size: Vector2.all(gameRef.tileSize),
+          size: Vector2.all(game.tileSize),
           animation: butterflyAnimation,
           anchor: Anchor.center,
           position: spritePosition,
         ),
       );
     } else if (type == EnemyType.grasshopper) {
-      final grasshopperAnimation = await gameRef.loadSpriteAnimation(
+      final grasshopperAnimation = await game.loadSpriteAnimation(
         'anim/spritesheet_enemy_grasshopper.png',
         SpriteAnimationData.sequenced(
           amount: 22,
@@ -137,14 +137,14 @@ class Enemy extends PhysicalEntity<SuperDashGame> {
 
       add(
         SpriteAnimationComponent(
-          size: Vector2.all(gameRef.tileSize),
+          size: Vector2.all(game.tileSize),
           animation: grasshopperAnimation,
           anchor: Anchor.center,
           position: spritePosition,
         ),
       );
     } else if (type == EnemyType.ant) {
-      final antAnimation = await gameRef.loadSpriteAnimation(
+      final antAnimation = await game.loadSpriteAnimation(
         'anim/spritesheet_enemy_ant.png',
         SpriteAnimationData.sequenced(
           amount: 12,
@@ -156,14 +156,14 @@ class Enemy extends PhysicalEntity<SuperDashGame> {
 
       add(
         SpriteAnimationComponent(
-          size: Vector2.all(gameRef.tileSize),
+          size: Vector2.all(game.tileSize),
           animation: antAnimation,
           anchor: Anchor.center,
           position: spritePosition,
         ),
       );
     } else if (type == EnemyType.firefly) {
-      final fireflyAnimation = await gameRef.loadSpriteAnimation(
+      final fireflyAnimation = await game.loadSpriteAnimation(
         'anim/spritesheet_enemy_dragonfly.png',
         SpriteAnimationData.sequenced(
           amount: 32,
@@ -175,7 +175,7 @@ class Enemy extends PhysicalEntity<SuperDashGame> {
 
       add(
         SpriteAnimationComponent(
-          size: Vector2.all(gameRef.tileSize),
+          size: Vector2.all(game.tileSize),
           animation: fireflyAnimation,
           anchor: Anchor.center,
           position: spritePosition,
@@ -184,7 +184,7 @@ class Enemy extends PhysicalEntity<SuperDashGame> {
     } else {
       add(
         RectangleComponent(
-          size: Vector2.all(gameRef.tileSize),
+          size: Vector2.all(game.tileSize),
           paint: Paint()..color = Colors.pink,
           anchor: Anchor.center,
           position: spritePosition,
